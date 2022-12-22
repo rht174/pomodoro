@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pomodoro/widgets/progress_widget.dart';
+import 'package:pomodoro/widgets/time_controller.dart';
 import 'package:pomodoro/widgets/time_options.dart';
 import 'package:pomodoro/widgets/timer_card.dart';
 import 'utils.dart';
@@ -38,9 +40,17 @@ class PomodoroScreen extends StatelessWidget {
               ),
               TimerCard(),
               SizedBox(
-                height: 45,
+                height: 40,
               ),
-              TimeOptions()
+              TimeOptions(),
+              SizedBox(
+                height: 40,
+              ),
+              TimeController(),
+              SizedBox(
+                height: 40,
+              ),
+              ProgressWidget()
             ],
           ),
         ),

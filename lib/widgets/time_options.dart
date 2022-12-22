@@ -8,11 +8,12 @@ class TimeOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     double selectedTime = 1500;
     return SingleChildScrollView(
+      controller: ScrollController(initialScrollOffset: 155),
       scrollDirection: Axis.horizontal,
       child: Row(
         children: selectableTimes.map((time) {
           return Container(
-            margin: EdgeInsets.only(left: 10),
+            margin: const EdgeInsets.only(left: 10),
             width: 70,
             height: 50,
             decoration: int.parse(time) == selectedTime

@@ -9,6 +9,7 @@ class TimerService extends ChangeNotifier {
   int rounds = 0;
   int goal = 0;
   String currentState = "FOCUS";
+  double scrollH = 155;
 
   void start() {
     timerPlaying = true;
@@ -39,6 +40,7 @@ class TimerService extends ChangeNotifier {
     currentDuration = selectedTime = 1500;
     rounds = goal = 0;
     timerPlaying = false;
+    scrollH = 155;
     notifyListeners();
   }
 

@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/utils.dart';
+import 'package:provider/provider.dart';
+
+import '../timer_service.dart';
 
 class TimerCard extends StatelessWidget {
   const TimerCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TimerService>(context);
+    final seconds = provider.currentDuration % 60;
+
     return Column(
       children: [
         Text(
-          'FOCUS',
+          provider.currentState,
           style: textStyle(35, Colors.white, FontWeight.w700),
         ),
         const SizedBox(
-          height: 20,
+          height: 50,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -33,8 +39,8 @@ class TimerCard extends StatelessWidget {
                   ]),
               child: Center(
                 child: Text(
-                  "25",
-                  style: textStyle(70, Colors.redAccent, FontWeight.bold),
+                  (provider.currentDuration ~/ 60).toString(),
+                  style: textStyle(70, renderColor(provider.currentState), FontWeight.bold),
                 ),
               ),
             ),
@@ -43,7 +49,7 @@ class TimerCard extends StatelessWidget {
             ),
             Text(
               ':',
-              style: textStyle(60, Colors.red[200]!, FontWeight.bold),
+              style: textStyle(60, Colors.white, FontWeight.bold),
             ),
             const SizedBox(
               width: 10,
@@ -63,8 +69,10 @@ class TimerCard extends StatelessWidget {
                   ]),
               child: Center(
                 child: Text(
-                  "00",
-                  style: textStyle(70, Colors.redAccent, FontWeight.bold),
+                  seconds == 0
+                      ? "${seconds.round()}0"
+                      : seconds.round().toString(),
+                  style: textStyle(70, renderColor(provider.currentState), FontWeight.bold),
                 ),
               ),
             ),
